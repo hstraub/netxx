@@ -1,0 +1,25 @@
+<appendix id="bugs"><title>Known Bugs</title>
+    <para>
+	The following is a list of bugs that may or may not be fixed.  If
+	you have any questions about what still needs to be done to Netxx,
+	please take a look at the TODO file.
+    </para>
+
+    <itemizedlist><title>Microsoft Windows</title>
+	<listitem>
+	    <para>
+		Of course there is no support for local domain sockets on
+		Win32. At some point I will add code for doing windows
+		pipes to simulate local domain sockets.
+	    </para>
+	</listitem>
+    </itemizedlist>
+
+    <itemizedlist><title>All Platforms</title>
+	<listitem>
+	    <para>
+		TLS Support is NOT thread safe. This will be fixed.
+	    </para>
+	</listitem>
+    </itemizedlist>
+</appendix>

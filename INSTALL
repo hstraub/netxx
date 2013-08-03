@@ -1,0 +1,82 @@
+Getting Started with Netxx
+
+Building Netxx
+
+
+The following instructions will show you how to compile Netxx on most
+platforms.
+
+Using Boost.Jam
+
+The Netxx build system uses Boost.Jam. If you don't already have Boost.Jam
+installed, you will need to do that first. The Boost.Jam download site is
+http://sourceforge.net/project/showfiles.php?group_id=7586&package_id=72941
+
+By default, the Netxx build system will build a debugging version of Netxx.
+If you want to build a release version (one with optimizations and no
+debugging symbols) you can use the --release flag to jam.
+
+jam --release
+
+Object files, libraries and executables are built into a release variant
+directory. For debug builds, they are placed into a directory called debug.
+For release builds, everything will be built into the release directory.
+
+If OpenSSL is installed into a non-standard directory, you may need to set
+the OPENSSL_INC and OPENSSL_LIB environment variables so that the Netxx
+build system knows where they are.
+
+Building on Unix
+
+To build Netxx from the command line of a Unix-like operating system you
+use the configure shell script. Running this script will test your
+environment and create some Jamfiles.
+
+After you run the configure script, you can run jam to build Netxx.
+
+Here is an example build of Netxx on AIX.
+
+env CC=gcc OPENSSL_INC=/usr/local/include OPENSSL_LIB=/usr/local/lib ./
+configure
+env CC=gcc OPENSSL_INC=/usr/local/include OPENSSL_LIB=/usr/local/lib jam
+--release
+Building on Windows
+
+To build Netxx Windows, you first need to set up your environment for jam.
+If you will be compiling Netxx with Microsoft Visual Studio .NET, you can
+use the build\msvc7.bat batch file.
+
+Open a CMD.EXE window, cd to the Netxx directory, and run the following
+commands.
+
+build\msvc7.bat
+jam
+
+Once your environment is set up, you can use jam to build Netxx. If you
+would like TLS support, you must first build OpenSSL. Then you can tell the
+Netxx to build in support for TLS.
+
+For this example, we will assume that you installed the OpenSSL header
+files in c:\openssl\include and the OpenSSL libraries in c:\openssl\lib.
+
+build\msvc7.bat
+jam -sWITH_OPENSSL=yes -sOPENSSL_INC=c:\openssl\include -sOPENSSL_LIB=c:\
+openssl\lib
+
+You can also set these variables in your environment.
+
+build\msvc7.bat
+set WITH_OPENSSL=yes
+set OPENSSL_INC=c:\openssl\include
+set OPENSSL_LIB=c:\openssl\lib
+jam
+Learning the Netxx API
+
+The fastest way to learn how to use Netxx is to review the included example
+programs. Netxx comes with many simple and easy to understand example
+programs such as an echo client/server and daytime client/server.
+
+For complete API reference, you should take a look at the doxygen generated
+web pages. Even with these resources, the best place to hang out is in the
+Netxx header files.
+
